@@ -47,7 +47,7 @@ class GroupApplicationTestsChrome {
 	}
 
 	@Test
-	public void testEmpty() throws{
+	public void testEmpty(){
 
 		driver.findElement(By.cssSelector("input")).sendKeys("");
 		driver.findElement(By.cssSelector("button")).click();
