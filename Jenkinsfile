@@ -2,16 +2,7 @@ pipeline {
     agent any
 
     stages {
-		stage('Build Front') {
-            steps {
-				dir('front') {
-					echo 'Building..'   
-					bat 'npm install'
-					bat 'npm start'
-				}
 
-            }
-        }
         stage('Build Back') {
             steps {
                 echo 'Building..'   
@@ -26,6 +17,15 @@ pipeline {
                 withGradle(){
                     bat '.\\gradlew test'
                 }
+            }
+        }
+		stage('Build Front') {
+            steps {
+				dir('front') {
+					echo 'Building..'   
+					bat 'npm install'
+				}
+
             }
         }
         stage('Deploy') {
