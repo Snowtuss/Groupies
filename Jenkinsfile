@@ -11,14 +11,6 @@ pipeline {
                 }
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-                withGradle(){
-                    bat '.\\gradlew test'
-                }
-            }
-        }
 		stage('Build Front') {
             steps {
 				dir('front') {
@@ -28,5 +20,18 @@ pipeline {
 
             }
         }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+                withGradle(){
+                    bat '.\\gradlew test'
+                }
+            }
+        }
+		stage('SonarQube analysis') {
+			withSonarQubeEnv() { // Will pick the global server connection you have configured
+			bat '.\\gradlew sonarqube'
+		}
+		
     }
 }
