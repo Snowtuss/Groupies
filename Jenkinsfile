@@ -6,7 +6,7 @@ pipeline {
             steps {
 				dir('front') {
 					echo 'Building..'   
-					bat 'npm package-lock'
+
 					bat 'npm start'
 				}
 
