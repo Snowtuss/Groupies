@@ -5,7 +5,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                .\gradlew build
+                withGradle(){
+                    sh '.\gradlew build'
+                }
+                
             }
         }
         stage('Test') {
