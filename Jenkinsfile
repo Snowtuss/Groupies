@@ -6,7 +6,7 @@ pipeline {
             steps {
                 echo 'Building..'   
                  withGradle(){
-                    bat '.\gradlew build'
+                    bat '.\\gradlew build'
                 }
             }
         }
