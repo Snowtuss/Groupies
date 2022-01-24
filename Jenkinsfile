@@ -4,10 +4,12 @@ pipeline {
     stages {
 		stage('Build Front') {
             steps {
-                echo 'Building..'   
-				bat 'cd front'
-				bat 'npm package-lock'
-				bat 'npm start'
+				dir('front') {
+					echo 'Building..'   
+					bat 'npm package-lock'
+					bat 'npm start'
+				}
+
             }
         }
         stage('Build Back') {
