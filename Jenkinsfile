@@ -6,7 +6,7 @@ pipeline {
             steps {
 				dir('front') {
 					echo 'Building..'   
-
+					bat 'rm -rf node_modules && npm install'
 					bat 'npm start'
 				}
 
