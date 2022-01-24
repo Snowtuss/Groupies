@@ -2,7 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+		stage('Build Front') {
+            steps {
+                echo 'Building..'   
+				bat 'cd front'
+				bat 'npm package-lock'
+				bat 'npm start'
+            }
+        }
+        stage('Build Back') {
             steps {
                 echo 'Building..'   
                  withGradle(){
